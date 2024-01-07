@@ -63,8 +63,8 @@ a.desc:after {
 }
 
 .btn-default {
-    --bs-btn-hover-border-color: #b5b5b5;
-    --bs-btn-border-color: #d0d0d0;
+    --bs-btn-hover-border-color: #ffffff;
+    --bs-btn-border-color: #e8e8e8;
 }
 
 /* align the logout "link" (button in form) of the navbar */
