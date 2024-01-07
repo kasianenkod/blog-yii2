@@ -27,3 +27,19 @@ form .btn {
 .form-check-label::before{
 	color: #686945;
 }
+
+select {
+	background-color: #fff;
+	border: 1px solid #686945;
+	color: #686945;
+	cursor: pointer;
+	appearance: none;
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23686945" width="18px" height="18px"><path d="M7 10l5 5 5-5z" /></svg>');
+	background-repeat: no-repeat;
+	background-position: right center;
+	padding-right: 20px;
+}
+
+select:hover {
+	border-color: #A29E71;
+}
