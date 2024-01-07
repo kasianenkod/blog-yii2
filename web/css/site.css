@@ -58,6 +58,15 @@ a.desc:after {
     margin: 0 0 15px 0;
 }
 
+.help-block {
+    color: #a94442;
+}
+
+.btn-default {
+    --bs-btn-hover-border-color: #b5b5b5;
+    --bs-btn-border-color: #d0d0d0;
+}
+
 /* align the logout "link" (button in form) of the navbar */
 .nav li > form > button.logout {
     padding-top: 7px;
