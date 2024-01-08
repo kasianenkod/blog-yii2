@@ -38,7 +38,8 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             'brandUrl' => Yii::$app->homeUrl,
             'options' => ['class' => 'navbar-expand-md navbar-dark bg-dark fixed-top']
         ]);
-        echo Nav::widget([
+
+        $widget = [
             'options' => ['class' => 'navbar-nav'],
             'items' => [
                 ['label' => 'Головна сторінка', 'url' => ['/site/index']],
@@ -53,12 +54,15 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                         ['class' => 'nav-link btn btn-link logout']
                     )
                     . Html::endForm()
-                    . '</li>',
-                Yii::$app->user->isGuest
-                    ? ['label' => 'Зареєструватися', 'url' => ['/auth/signup']]
-                    : null
+                    . '</li>'
             ]
-        ]);
+        ];
+
+        if (Yii::$app->user->isGuest) {
+            $widget['items'][] = ['label' => 'Зареєструватися', 'url' => ['/auth/signup']];
+        }
+
+        echo Nav::widget($widget);
         NavBar::end();
         ?>
     </header>
