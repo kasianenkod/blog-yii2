@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /** @var app\models\Article $model */
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Articles', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Статті', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
@@ -16,12 +16,12 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Set Image', ['set-image', 'id'=>$model->id], ['class' => 'btn btn-default']); ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('Оновити', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Додати зображення', ['set-image', 'id'=>$model->id], ['class' => 'btn btn-default']); ?>
+        <?= Html::a('Видалити', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Справді хочете видалити дану статтю?',
                 'method' => 'post',
             ],
         ]) ?>

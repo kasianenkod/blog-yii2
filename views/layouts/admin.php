@@ -41,11 +41,11 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 		echo Nav::widget([
 			'options' => ['class' => 'navbar-nav navbar-right'],
 			'items' => [
-				['label' => 'User', 'url' => ['/admin/user']],
-				['label' => 'Home', 'url' => ['/admin/default/index']],
-				['label' => 'Article', 'url' => ['/admin/article']],
-				['label' => 'Comments', 'url' => ['/admin/comment']],
-				['label' => 'Topics', 'url' => ['/admin/topic']],
+				['label' => 'Користувачі', 'url' => ['/admin/user']],
+				['label' => 'Головна сторінка', 'url' => ['/admin/default/index']],
+				['label' => 'Статті', 'url' => ['/admin/article']],
+				['label' => 'Коментарі', 'url' => ['/admin/comment']],
+				['label' => 'Категорії', 'url' => ['/admin/topic']],
 			],
 		]);
 		NavBar::end();

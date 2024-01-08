@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /** @var yii\web\View $this */
 /** @var app\models\Topic $model */
 
-$this->title = 'Create Topic';
-$this->params['breadcrumbs'][] = ['label' => 'Topics', 'url' => ['index']];
+$this->title = 'Створити категорію';
+$this->params['breadcrumbs'][] = ['label' => 'Категорії', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="topic-create">

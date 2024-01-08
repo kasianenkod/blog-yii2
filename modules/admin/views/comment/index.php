@@ -10,7 +10,7 @@ use yii\grid\GridView;
 /** @var app\models\CommentSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Comments';
+$this->title = 'Коментарі';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="comment-index">
@@ -18,10 +18,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Comment', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Додати коментар', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); 
+    ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -37,10 +38,10 @@ $this->params['breadcrumbs'][] = $this->title;
             //'date',
             //'delete',
             [
-                'class' => ActionColumn::className(),
+                'class' => ActionColumn::class,
                 'urlCreator' => function ($action, Comment $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
-                 }
+                }
             ],
         ],
     ]); ?>
