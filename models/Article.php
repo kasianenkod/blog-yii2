@@ -131,4 +131,15 @@ class Article extends \yii\db\ActiveRecord
     {
         return Yii::$app->formatter->asDate($this->date);
     }
+
+    /**
+     * View counter for article
+     */
+
+    public function viewedCounter()
+    {
+        $this->viewed += 1;
+        return $this->save(false);
+    }
+
 }
