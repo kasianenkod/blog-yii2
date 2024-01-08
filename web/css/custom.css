@@ -18,10 +18,8 @@ form label {
 
 form .btn {
 	background-color: #686945;
-	/* Колір тексту у введеннях */
 	border: 1px solid #686945;
-	/* Колір меж для input */
-	/* Інші стилі, які ви хочете застосувати */
+	font-size: 15px;
 }
 
 .form-check-label::before{
