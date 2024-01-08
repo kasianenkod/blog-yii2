@@ -41,3 +41,24 @@ select {
 select:hover {
 	border-color: #A29E71;
 }
+
+form .my-btn-success {
+	background-color: #198754;
+	border-color: #198754;
+}
+
+form .my-btn-success:hover, form .my-btn-success:active {
+	background-color: #A29E71;
+	border-color: #A29E71;
+}
+
+form .my-btn-primary {
+		background-color: #0a58ca;
+		border-color: #0a58ca;
+}
+
+form .my-btn-primary:hover,
+form .my-btn-primary:active {
+	background-color: #A29E71;
+	border-color: #A29E71;
+}

@@ -37,20 +37,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <div class="form-group">
                 <div>
-                    <?= Html::submitButton('Увійти', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                    <?= Html::submitButton('Увійти', ['class' => 'my-btn-primary btn btn-primary', 'name' => 'login-button']) ?>
 
-                    <?= Html::a('Зареєструватися', ['/auth/signup'], ['class' => 'btn btn-success']) ?>
+                    <?= Html::a('Зареєструватися', ['/auth/signup'], ['class' => 'my-btn-success btn btn-success']) ?>
 
                 </div>
             </div>
 
             <?php ActiveForm::end(); ?>
-
-            <!--  <div style="color:#999;">
-                You may login with <strong>admin/admin</strong> or <strong>demo/demo</strong>.<br>
-                To modify the username/password, please check out the code <code>app\models\User::$users</code>.
-            </div>
-            -->
         </div>
     </div>
 </div>
