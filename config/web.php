@@ -50,7 +50,16 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 '' => 'site/index',
-                '<action>' => 'site/<action>'
+                '<action>' => 'site/<action>',
+                /* admin and user modules */
+                'admin/index' => 'admin/default/index',
+                'user/index' => 'user/default/index',
+                '<action>' => 'default/<action>',
+                '/login' => 'site/login',
+                '<action>' => 'site/<action>',
+                '<controller:(post|comment)>/<id:\d+>/<action:(create|update|delete)>' => '<controller>/<action>',
+                '<controller:(post|comment)>/<id:\d+>' => '<controller>/view',
+                '<controller:(post|comment)>s' => '<controller>/index',
             ],
         ],
 
@@ -59,6 +68,9 @@ $config = [
     'modules' => [
         'admin' => [
             'class' => 'app\modules\admin\Module',
+        ],
+        'user' => [
+            'class' => 'app\modules\user\Module',
         ],
     ],
 
