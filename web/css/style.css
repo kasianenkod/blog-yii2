@@ -361,3 +361,38 @@ i.fa.fa-trash {
 	background-color: white;
 	padding: 10px;
 }
+
+.post-list .post-content {
+	padding: 0 20px 0 0;
+	overflow: hidden;
+}
+
+.post-list .entry-header {
+	margin: 22px 0;
+}
+
+.entry-header h6 a {
+	color: #686945;
+	font-weight: 700;
+	font-size: 12px;
+}
+.entry-header h6 a:hover {
+		color: #7b7c58; }
+
+.entry-header h1 a,
+.entry-header h6 a {
+	text-decoration: none;
+	letter-spacing: 0.5px;
+}
+
+.post-grid .entry-header h1,
+.post-list .entry-header h1 {
+	margin: 0;
+	line-height: 24px;
+}
+
+.post-grid .entry-header h1 a,
+.post-list .entry-header h1 a {
+	font-size: 18px;
+	line-height: 24px;
+}

@@ -5,23 +5,33 @@ use yii\helpers\Url;
 <div class="col-md-8">
 	<article class="post">
 		<div class="post-thumb">
-			<a href="blog.html"><img src="" alt=" image "></a>
+			<a href="blog.html">
+				<img src="<?= $article->getImage() ?>" alt="image">
+			</a>
 		</div>
 		<div class="post-content">
 			<header class="entry-header text-center text-uppercase">
 				<h6>
-					<a href=""> Поради по здоровому харчуванню </a>
+					<a href="<?= Url::toRoute(['/topic', 'id' => $article->topic->id]) ?>">
+						<?= $article->topic->name; ?>
+					</a>
 				</h6>
-				<h1 class="entry-title"><a href="blog.html"> Home is peaceful place </a></h1>
+				<h1 class="entry-title">
+					<a href=" blog.html"><?= $article->title; ?></a>
+				</h1>
 			</header>
 			<div class="entry-content">
-				Text.
+				<?= $article->description; ?>
 			</div>
 			<div class="decoration">
-				<a href="" class="btn btn-default">Tag</a>
+				<?php foreach (preg_split("/[\s,]+/", $article->tag) as $tag) : ?>
+					<a href="/search?SearchForm[text]=<?= str_replace('#', '', $tag) ?>" class="btn btn-default"><?= $tag ?></a>
+				<?php endforeach; ?>
+
 			</div>
 			<div class="social-share">
-				<span class="social-share-title pull-left text-capitalize">Kasianenko D, <?= date('Y'); ?></span>
+				<!-- text-capitalize -->
+				<span class="social-share-title pull-left">Автор: <?= $article->user->name; ?>, опубліковано <?= $article->getDate(); ?></span>
 				<ul class="text-center pull-right">
 					<li><a class="s-facebook" href="https://www.facebook.com/sharer/sharer.php?u=<?= Url::base('http'); ?>"><i class="fa fa-facebook"></i></a></li>
 					<li><a class="s-twitter" href="https://twitter.com/intent/tweet?url=<?= Url::base('http'); ?>"><i class="fa fa-twitter"></i></a></li>
