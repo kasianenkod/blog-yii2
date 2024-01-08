@@ -102,6 +102,12 @@ class Article extends \yii\db\ActiveRecord
         return '/no-image-available.jpg';
     }
 
+    public function saveArticle()
+    {
+        $this->user_id = Yii::$app->user->id;
+
+        return $this->save();
+    }
 
     public function saveImage($filename)
     {
