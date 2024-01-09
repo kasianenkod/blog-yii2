@@ -26,15 +26,20 @@ use yii\widgets\LinkPager;
 					<p><?= mb_strimwidth($article->description, 0, 360, "..."); ?>
 					</p>
 					<div class="btn-continue-reading text-center text-uppercase">
-						<a href="<?= Url::toRoute(['/view', 'id' => $article->id]) ?>" class="more-link">Continue Reading</a>
+						<a href="<?= Url::toRoute(['/view', 'id' => $article->id]) ?>" class="more-link">Читати далі</a>
 					</div>
 				</div>
 				<div class="social-share">
-					<span class="social-share-title pull-left text-capitalize">By <?= $article->user->name; ?> On <?= $article->getDate() ?>
-						<ul class="text-center pull-right">
-							<li><a class="s-facebook" href="#"><i class="fa fa-eye"></i></a></li>
-							<?= (int)$article->viewed; ?>
-						</ul>
+					<!-- text-capitalize -->
+					<span class="social-share-title pull-left">
+						Автор: <?= $article->user->name; ?>, опубліковано: <?= $article->getDate(); ?>
+					</span>
+					<ul class="text-center pull-right">
+						<li><a class="s-facebook" href="#">
+								<i class="fa fa-eye"></i>
+							</a></li>
+						<?= (int)$article->viewed; ?>
+					</ul>
 				</div>
 			</div>
 		</article>

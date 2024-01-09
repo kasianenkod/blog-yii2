@@ -10,7 +10,7 @@ use yii\grid\GridView;
 /** @var app\models\UserSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Users';
+$this->title = 'Користувачі';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-index">
