@@ -377,7 +377,8 @@ i.fa.fa-trash {
 	font-size: 12px;
 }
 .entry-header h6 a:hover {
-		color: #7b7c58; }
+	color: #7b7c58; 
+}
 
 .entry-header h1 a,
 .entry-header h6 a {
@@ -395,4 +396,33 @@ i.fa.fa-trash {
 .post-list .entry-header h1 a {
 	font-size: 18px;
 	line-height: 24px;
+}
+
+.search-form {
+	height: 90px;
+}
+
+.form-group.field-searchform-text.required {
+	font-size: 17px;
+	float: left;
+	width: 80%;
+}
+
+.btn-search {
+	float: left;
+	width: 20%;
+	padding: 4px;
+	background: #686945;
+	color: white;
+	font-size: 17px;
+	border: 1px solid grey;
+	border-radius: 5px;
+	border-left: none;
+	cursor: pointer;
+	height: 38px;
+	margin-top: 1px;
+}
+
+.btn-search:hover {
+	background: #7b7c58;
 }

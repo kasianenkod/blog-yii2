@@ -4,6 +4,18 @@ use yii\helpers\Url;
 ?>
 
 <div class="col-md-4" data-sticky_column>
+	<aside class="border pos-padding widget-search">
+		<?php $form = \yii\widgets\ActiveForm::begin([
+			'method' => 'get',
+			'action' => Url::to(['site/search']),
+			'options' => ['class' => 'search-form', 'role' => 'form']
+		]) ?>
+		<?php $searchForm = new \app\models\SearchForm() ?>
+		<?= $form->field($searchForm, 'text')->textInput(['class' => 'form-control search', 'placeholder' => 'Search'])->label(false) ?>
+		<button class="btn-search" type="submit"><i class="fa fa-search"></i></button>
+		<?php \yii\widgets\ActiveForm::end() ?>
+	</aside>
+
 	<div class="primary-sidebar">
 		<aside class="widget">
 			<h3 class="widget-title text-uppercase text-center">Популярні пости</h3>
