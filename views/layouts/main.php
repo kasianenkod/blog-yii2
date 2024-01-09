@@ -3,6 +3,7 @@
 /** @var yii\web\View $this */
 /** @var string $content */
 
+// use app\models\User;
 use app\assets\AppAsset;
 use app\widgets\Alert;
 use yii\bootstrap5\Breadcrumbs;
@@ -42,24 +43,31 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         $widget = [
             'options' => ['class' => 'navbar-nav'],
             'items' => [
-                ['label' => 'Головна сторінка', 'url' => ['/site/index']],
-                ['label' => 'About', 'url' => ['/site/about']],
-                ['label' => 'Contact', 'url' => ['/site/contact']],
-                Yii::$app->user->isGuest
-                    ? ['label' => 'Увійти', 'url' => ['/auth/login']]
-                    : '<li class="nav-item">'
-                    . Html::beginForm(['/auth/logout'])
-                    . Html::submitButton(
-                        'Вийти (' . Yii::$app->user->identity->username . ')',
-                        ['class' => 'nav-link btn btn-link logout']
-                    )
-                    . Html::endForm()
-                    . '</li>'
+                ['label' => 'Головна', 'url' => ['/site/index']],
             ]
         ];
 
+        // login and signup
         if (Yii::$app->user->isGuest) {
+            $widget['items'][] = ['label' => 'Увійти', 'url' => ['/auth/login']];
             $widget['items'][] = ['label' => 'Зареєструватися', 'url' => ['/auth/signup']];
+        } else {
+            $user = Yii::$app->user->identity;
+            //admin panel
+            if ($user->isAdmin()) {
+                $widget['items'][] = ['label' => 'Адмін панель adm', 'url' => ['/admin/default/index']];
+            } else {
+                $widget['items'][] = ['label' => 'Адмін панель usr', 'url' => ['/user/default/index']];
+            }
+
+            $widget['items'][] = '<li class="nav-item">'
+                . Html::beginForm(['/auth/logout'])
+                . Html::submitButton(
+                    'Вийти (' . $user->username . ')',
+                    ['class' => 'nav-link btn btn-link logout']
+                )
+                . Html::endForm()
+                . '</li>';
         }
 
         echo Nav::widget($widget);
@@ -77,7 +85,6 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             </div>
         </div>
     </div>
-
     <footer id="footer" class="mt-auto py-3 bg-light">
         <div class="container">
             <p class="pull-left">&copy; Kasianenko D <?= date('Y') ?></p>

@@ -160,4 +160,9 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return $this->save(false);
     }
+
+    public function isAdmin()
+    {
+        return $this->is_admin == 1 ? true : false;
+    }
 }

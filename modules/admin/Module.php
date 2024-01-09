@@ -37,8 +37,8 @@ class Module extends \yii\base\Module
                     [
                         'allow' => true,
                         'matchCallback' => function ($rule, $action) {
-                            if (isset(\Yii::$app->user->identity->login)) {
-                                return (\Yii::$app->user->identity->login == 'test@gmail.com');
+                            if (isset(\Yii::$app->user->identity)) {
+                                return (\Yii::$app->user->identity->isAdmin());
                             } else {
                                 return false;
                             }

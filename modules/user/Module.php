@@ -13,6 +13,7 @@ class Module extends \yii\base\Module
     /**
      * {@inheritdoc}
      */
+    public $layout = '/user';
     public $controllerNamespace = 'app\modules\user\controllers';
 
     /**
@@ -37,7 +38,8 @@ class Module extends \yii\base\Module
                     [
                         'allow' => true,
                         'matchCallback' => function ($rule, $action) {
-                            return !Yii::$app->user->isGuest;
+                            return !Yii::$app->user->isGuest &&
+                                !Yii::$app->user->identity->isAdmin();
                         }
                     ]
                 ]
