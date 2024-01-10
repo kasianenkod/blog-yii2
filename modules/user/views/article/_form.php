@@ -16,11 +16,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'image')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'date')->textInput() ?>
+
+    <!-- <?= $form->field($model, 'image')->textInput(['maxlength' => true]) ?> -->
 
     <?= $form->field($model, 'tag')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'topic_id')->dropDownList($topics) ?>
+
+    <?= $form->field($model, 'user_id')->hiddenInput(['value' => Yii::$app->user->id])->label(false) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Зберегти', ['class' => 'btn btn-success']) ?>

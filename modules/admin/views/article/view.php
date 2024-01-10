@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Оновити', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Додати зображення', ['set-image', 'id'=>$model->id], ['class' => 'btn btn-default']); ?>
+        <?= Html::a('Додати зображення', ['set-image', 'id' => $model->id], ['class' => 'btn btn-default']); ?>
         <?= Html::a('Видалити', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
@@ -34,7 +34,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'title',
             'description:ntext',
             'date',
-            'image',
+            // 'image',
+            [
+                'format' => 'html',
+                'label' => 'Image',
+                'value' => function ($data) {
+                    return Html::img($data->getImage(), ['width' => 200]);
+                }
+            ],
             'tag',
             'viewed',
             'topic_id',
