@@ -14,15 +14,18 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'text')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'user_id')->textInput() ?>
+    <!-- <?= $form->field($model, 'user_id')->textInput() ?> -->
+    <?= $form->field($model, 'user_id')->hiddenInput(['value' => Yii::$app->user->id])->label(false) ?>
 
-    <?= $form->field($model, 'comment_id')->textInput() ?>
+    <!-- <?= $form->field($model, 'comment_id')->textInput() ?> -->
 
-    <?= $form->field($model, 'article_id')->textInput() ?>
+    <?= $form->field($model, 'article_id')->dropDownList($articles) ?>
 
-    <?= $form->field($model, 'date')->textInput() ?>
+    <!-- <?= $form->field($model, 'date')->textInput() ?> -->
+    <!-- Використовуємо текстове поле для дати та встановлюємо клас flatpickr на ньому -->
+    <?= $form->field($model, 'date')->textInput(['class' => 'flatpickr']) ?>
 
-    <?= $form->field($model, 'delete')->textInput() ?>
+    <!-- <?= $form->field($model, 'delete')->textInput() ?> -->
 
     <div class="form-group">
         <?= Html::submitButton('Зберегти', ['class' => 'btn btn-success']) ?>
@@ -31,3 +34,12 @@ use yii\widgets\ActiveForm;
     <?php ActiveForm::end(); ?>
 
 </div>
+
+<!-- Додаємо скрипт для ініціалізації Flatpickr -->
+<?php
+$this->registerJs('
+    flatpickr(".flatpickr", {
+        dateFormat: "Y-m-d", // Формат дати
+    });
+');
+?>
