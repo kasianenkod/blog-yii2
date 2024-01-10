@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'name',
             'login',
-            'password',
+            // 'password',
             [
                 'format' => 'html',
                 'label' => 'Image',

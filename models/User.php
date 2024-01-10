@@ -167,6 +167,18 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         return $this->save(false);
     }
 
+    public function myUpdate()
+    {
+        $user = static::findOne($this->id);
+        if ($user->password != $this->password) {
+            // $hash = Yii::$app->getSecurity()->generatePasswordHash($this->password);
+            // $this->password = $hash;
+            return $this->create();
+        }
+
+        return $this->save(false);
+    }
+
     public function isAdmin()
     {
         return $this->is_admin == 1 ? true : false;
