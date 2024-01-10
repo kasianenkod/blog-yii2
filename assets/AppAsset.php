@@ -25,8 +25,11 @@ class AppAsset extends AssetBundle
         'css/style.css',
         'css/custom.css',
         'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css',
+        'https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css',
     ];
-    public $js = [];
+    public $js = [
+        'https://cdn.jsdelivr.net/npm/flatpickr',
+    ];
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap5\BootstrapAsset'

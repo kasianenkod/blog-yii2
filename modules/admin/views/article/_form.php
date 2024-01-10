@@ -16,7 +16,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'date')->textInput() ?>
+    <!-- <?= $form->field($model, 'date')->textInput() ?> -->
+    <!-- Використовуємо текстове поле для дати та встановлюємо клас flatpickr на ньому -->
+    <?= $form->field($model, 'date')->textInput(['class' => 'flatpickr']) ?>
 
     <!-- <?= $form->field($model, 'image')->textInput(['maxlength' => true]) ?> -->
 
@@ -33,3 +35,12 @@ use yii\widgets\ActiveForm;
     <?php ActiveForm::end(); ?>
 
 </div>
+
+<!-- Додаємо скрипт для ініціалізації Flatpickr -->
+<?php
+$this->registerJs('
+    flatpickr(".flatpickr", {
+        dateFormat: "Y-m-d", // Формат дати
+    });
+');
+?>
