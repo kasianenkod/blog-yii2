@@ -62,3 +62,56 @@ form .my-btn-primary:active {
 	background-color: #A29E71;
 	border-color: #A29E71;
 }
+
+/* адмінка */
+
+.module-default-index {
+	display: block;
+	background-color: #f5f5f5;
+	margin: 50px 30px;
+	padding: 15px;
+}
+
+.module-default-index > p {
+	margin-top: 20px;
+}
+
+.module-default-index .features {
+	margin: 0;
+	padding: 15px 10px;
+	display: flex;
+	justify-content: center;
+	height: auto;
+}
+
+.module-default-index .features .feature {
+	max-width: 300px;
+	margin: 0 10px;
+	padding: 20px;
+	background-color: #fff;
+	border-radius: 8px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	text-align: center;
+}
+
+.module-default-index .features .feature h1 {
+	color: #333;
+}
+
+.module-default-index .features .feature p {
+	color: #555;
+	margin-bottom: 15px;
+}
+
+.module-default-index .features .feature {
+	margin-bottom: 10px;
+}
+
+.module-default-index .features .feature a {
+	text-decoration: none;
+	color: #686945;
+}
+
+.module-default-index .features .feature a:hover {
+	color: #A29E71;
+}

@@ -1,12 +1,40 @@
-<div class="admin-default-index">
-    <h1><?= $this->context->action->uniqueId ?></h1>
-    <p>
-        This is the view content for action "<?= $this->context->action->id ?>".
-        The action belongs to the controller "<?= get_class($this->context) ?>"
-        in the "<?= $this->context->module->id ?>" module.
-    </p>
-    <p>
-        You may customize this page by editing the following file:<br>
-        <code><?= __FILE__ ?></code>
-    </p>
+<?php
+
+use yii\helpers\Url;
+?>
+
+<div class="module-default-index">
+    <h1>Вітаємо на панелі адміністратора!</h1>
+    <p>Даний модуль дозволяє вам:</p>
+
+    <div class="features">
+        <div class="feature">
+            <p>Управляти користувачами блогу</p>
+            <a href="<?= Url::toRoute('/admin/user/') ?>">
+                Управління користувачами
+            </a>
+        </div>
+
+        <div class="feature">
+            <p>Переглядати та редагувати статті</p>
+            <a href="<?= Url::toRoute('/admin/article/') ?>">
+                Перегляд та редагування статей
+            </a>
+        </div>
+
+        <div class="feature">
+            <p>Працювати з категоріями</p>
+            <a href="<?= Url::toRoute('/admin/topic/') ?>">
+                Категорії статей
+            </a>
+        </div>
+
+        <div class="feature">
+            <p>Та коментарями до статей</p>
+            <a href="<?= Url::toRoute('/admin/comment') ?>">
+                Коментарі до статей
+            </a>
+        </div>
+    </div>
+
 </div>

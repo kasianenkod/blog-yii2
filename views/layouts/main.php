@@ -55,9 +55,9 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             $user = Yii::$app->user->identity;
             //admin panel
             if ($user->isAdmin()) {
-                $widget['items'][] = ['label' => 'Адмін панель adm', 'url' => ['/admin/default/index']];
+                $widget['items'][] = ['label' => 'Адмін панель', 'url' => ['/admin/default/index']];
             } else {
-                $widget['items'][] = ['label' => 'Адмін панель usr', 'url' => ['/user/default/index']];
+                $widget['items'][] = ['label' => 'Панель управління', 'url' => ['/user/default/index']];
             }
 
             $widget['items'][] = '<li class="nav-item">'

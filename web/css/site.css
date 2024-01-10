@@ -1,3 +1,13 @@
+.navbar-brand {
+    background-color: #686945;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.navbar-brand:hover {
+    background-color: unset;
+}
+
 main > .container {
     padding: 70px 15px 20px;
 }

@@ -1,12 +1,26 @@
-<div class="user-default-index">
-    <h1><?= $this->context->action->uniqueId ?></h1>
-    <p>
-        This is the view content for action "<?= $this->context->action->id ?>".
-        The action belongs to the controller "<?= get_class($this->context) ?>"
-        in the "<?= $this->context->module->id ?>" module.
-    </p>
-    <p>
-        You may customize this page by editing the following file:<br>
-        <code><?= __FILE__ ?></code>
-    </p>
+<?php
+
+use yii\helpers\Url;
+?>
+
+<div class="module-default-index">
+    <h1>Вітаємо на панелі управління!</h1>
+    <p>Даний модуль дозволяє вам:</p>
+
+    <div class="features">
+        <div class="feature">
+            <p>Управляти своїм обліковим записом</p>
+            <a href="<?= Url::toRoute('/user/user/') ?>">
+                Управління обліковим записом
+            </a>
+        </div>
+
+        <div class="feature">
+            <p>Переглядати та редагувати власні статті</p>
+            <a href="<?= Url::toRoute('/user/article/') ?>">
+                Перегляд та редагування статей
+            </a>
+        </div>
+    </div>
+
 </div>
