@@ -42,10 +42,10 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 			'options' => ['class' => 'navbar-nav navbar-right'],
 			'items' => [
 				['label' => 'Головна', 'url' => ['/admin/default/index']],
-				['label' => 'Користувачі', 'url' => ['/admin/user']],
-				['label' => 'Статті', 'url' => ['/admin/article']],
-				['label' => 'Коментарі', 'url' => ['/admin/comment']],
-				['label' => 'Категорії', 'url' => ['/admin/topic']],
+				['label' => 'Користувачі', 'url' => ['/admin/user/index']],
+				['label' => 'Статті', 'url' => ['/admin/article/index']],
+				['label' => 'Коментарі', 'url' => ['/admin/comment/index']],
+				['label' => 'Категорії', 'url' => ['/admin/topic/index']],
 				'<li class="nav-item">'
 					. Html::beginForm(['/auth/logout'])
 					. Html::submitButton(
