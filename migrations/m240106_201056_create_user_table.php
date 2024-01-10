@@ -14,10 +14,11 @@ class m240106_201056_create_user_table extends Migration
     {
         $this->createTable('{{%user}}', [
             'id' => $this->primaryKey(),
-            'name' => $this->string(),
-            'login' => $this->string(),
-            'password' => $this->string(),
+            'name' => $this->string()->notNull(),
+            'login' => $this->string()->notNull(),
+            'password' => $this->string()->notNull(),
             'image' => $this->string(),
+            'is_admin' => $this->boolean()->notNull(),
         ]);
     }
     /**

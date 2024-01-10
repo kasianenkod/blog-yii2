@@ -13,15 +13,15 @@ class m240106_201103_create_article_table extends Migration
     public function safeUp()
     {
         $this->createTable('{{%article}}', [
-            'id' => $this->primaryKey(),
-            'title' => $this->string(),
-            'description' => $this->text(),
-            'date' => $this->date(),
+            'id' => $this->primaryKey()->notNull(),
+            'title' => $this->string()->notNull(),
+            'description' => $this->text()->notNull(),
+            'date' => $this->date()->notNull(),
             'image' => $this->string(),
             'tag' => $this->string(),
-            'viewed' => $this->integer(),
-            'topic_id' => $this->integer(),
-            'user_id' => $this->integer(),
+            'viewed' => $this->integer()->notNull()->default(0),
+            'topic_id' => $this->integer()->notNull(),
+            'user_id' => $this->integer()->notNull(),
         ]);
         // create index for column `topic_id`
         $this->createIndex(

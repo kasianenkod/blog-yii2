@@ -14,7 +14,7 @@ class m240106_201024_create_topic_table extends Migration
     {
         $this->createTable('{{%topic}}', [
             'id' => $this->primaryKey(),
-            'name' => $this->string(),
+            'name' => $this->string()->notNull(),
         ]);
     }
     /**
