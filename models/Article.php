@@ -37,6 +37,7 @@ class Article extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['title', 'description', 'date', 'user_id', 'topic_id'], 'required'],
             [['description'], 'string'],
             [['date'], 'safe'],
             [['viewed', 'topic_id', 'user_id'], 'integer'],
@@ -141,5 +142,4 @@ class Article extends \yii\db\ActiveRecord
         $this->viewed += 1;
         return $this->save(false);
     }
-
 }
