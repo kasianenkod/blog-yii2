@@ -6,8 +6,13 @@ use yii\widgets\LinkPager;
 
 <div class="col-md-8">
 	<div style="text-align: center">
-		<h2>Search by tag (<?= $search ?>)</h2>
+		<h2>Пошук за тегом (<?= $search ?>)</h2>
+
+		<?php if (count($articles) == 0) : ?>
+			<h2 class="alert help-block">За вашим запитом нічого не знайдено!</h2>
+		<?php endif; ?>
 	</div>
+
 	<?php foreach ($articles as $article) : ?>
 		<article class="post">
 			<div class="post-thumb">
