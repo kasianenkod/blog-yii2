@@ -42,7 +42,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 			'options' => ['class' => 'navbar-nav navbar-right'],
 			'items' => [
 				['label' => 'Головна', 'url' => ['/user/default/index']],
-				['label' => 'Користувачі', 'url' => ['/user/user/index']],
+				['label' => 'Обліковий запис', 'url' => ['/user/user/index']],
 				['label' => 'Статті', 'url' => ['/user/article/index']],
 				'<li class="nav-item">'
 					. Html::beginForm(['/auth/logout'])

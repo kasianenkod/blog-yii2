@@ -10,7 +10,7 @@ use yii\grid\GridView;
 /** @var app\models\UserSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Користувачі';
+$this->title = 'Обліковий запис';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-index">
@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     return Html::img($data->getImage(), ['width' => 200]);
                 }
             ],
-            ['class' => 'yii\grid\ActionColumn', 'template' => '{view} {update}'],
+            ['class' => 'yii\grid\ActionColumn', 'template' => '{view} {update} {delete}'],
         ],
     ]);
 
