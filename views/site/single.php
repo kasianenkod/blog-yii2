@@ -134,38 +134,40 @@ use yii\helpers\Url;
 										</p>
 									</div>
 									<div class="comment-text">
-										Видалити коментар
+										Видалений коментар
 									</div>
 								</div>
 							</div>
 						<?php endif; ?>
 					<?php endif; ?>
 
-					<div class="replay-comment" hidden>
-						<?php $form = \yii\widgets\ActiveForm::begin([
-							'action' => ['site/comment', 'id' => $article->id, 'id_comment' => $comment->id],
-							'options' => ['class' => '', 'role' => 'form']
-						]) ?>
-						<div class="leave-comment-child"><!--leave comment-->
-							<h4>Залишити відгук для
-								<?php if ($comment->user) {
-									echo $comment->user->name;
-								} else {
-									echo 'гостя';
-								} ?>
-							</h4>
-							<div class="form-group">
-								<div class="col-md-12">
-									<?= $form->field($commentForm, 'comment')->textarea([
-										'class' => 'form-control',
-										'placeholder' => 'Write Message'
-									])->label(false) ?>
+					<?php if ($comment->user_id && $comment->user_id != Yii::$app->user->id) : ?>
+						<div class="replay-comment" hidden>
+							<?php $form = \yii\widgets\ActiveForm::begin([
+								'action' => ['site/comment', 'id' => $article->id, 'id_comment' => $comment->id],
+								'options' => ['class' => '', 'role' => 'form']
+							]) ?>
+							<div class="leave-comment-child"><!--leave comment-->
+								<h4>Залишити відгук для
+									<?php if ($comment->user) {
+										echo $comment->user->name;
+									} else {
+										echo 'гостя';
+									} ?>
+								</h4>
+								<div class="form-group">
+									<div class="col-md-12">
+										<?= $form->field($commentForm, 'comment')->textarea([
+											'class' => 'form-control',
+											'placeholder' => 'Write Message'
+										])->label(false) ?>
+									</div>
 								</div>
-							</div>
-							<button type="submit" class="btn send-btn">Опублікувати коментар</button>
-							<?php \yii\widgets\ActiveForm::end() ?>
-						</div><!--end leave comment-->
-					</div>
+								<button type="submit" class="btn send-btn">Опублікувати коментар</button>
+								<?php \yii\widgets\ActiveForm::end() ?>
+							</div><!--end leave comment-->
+						</div>
+					<?php endif; ?>
 					<div class="comment-childs-container">
 						<div class="comment-childs">
 							<?php foreach ($commentsChild as $commentChild) : ?>
