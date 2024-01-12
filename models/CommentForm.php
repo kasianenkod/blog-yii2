@@ -19,13 +19,18 @@ class CommentForm extends Model
 	{
 		$comment = new Comment;
 		$comment->text = $this->comment;
-		$comment->user_id = Yii::$app->user->id;
+		if (Yii::$app->user) {
+			$comment->user_id = Yii::$app->user->id;
+		} else {
+			$comment->user_id = NULL;
+		}
+		
 		$comment->article_id = $article_id;
 		if ($comment_id != null) {
 			$comment->comment_id = $comment_id;
 		}
 		$comment->date = date('Y-m-d');
-		
+
 		return $comment->save();
 	}
 }

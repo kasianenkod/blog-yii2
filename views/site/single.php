@@ -42,27 +42,25 @@ use yii\helpers\Url;
 		</div>
 	</article>
 
-	<?php if (!Yii::$app->user->isGuest) : ?>
-		<?php $form = \yii\widgets\ActiveForm::begin([
-			'action' => ['site/comment', 'id' => $article->id],
-			'options' => ['class' => '', 'role' => 'form']
-		]) ?>
-		<div class="leave-comment"><!--leave comment-->
-			<h4>Залишити відповідь</h4>
-			<form class="form-horizontal contact-form" role="form" method="post" action="#">
-				<div class="form-group">
-					<div class="col-md-12">
-						<?= $form->field($commentForm, 'comment')->textarea([
-							'class' => 'form-control',
-							'placeholder' => 'Write Message'
-						])->label(false) ?>
-					</div>
+	<?php $form = \yii\widgets\ActiveForm::begin([
+		'action' => ['site/comment', 'id' => $article->id],
+		'options' => ['class' => '', 'role' => 'form']
+	]) ?>
+	<div class="leave-comment"><!--leave comment-->
+		<h4>Залишити відповідь</h4>
+		<form class="form-horizontal contact-form" role="form" method="post" action="#">
+			<div class="form-group">
+				<div class="col-md-12">
+					<?= $form->field($commentForm, 'comment')->textarea([
+						'class' => 'form-control',
+						'placeholder' => 'Write Message'
+					])->label(false) ?>
 				</div>
-				<button type="submit" class="btn send-btn">Опублікувати коментар</button>
-				<?php \yii\widgets\ActiveForm::end() ?>
-			</form>
-		</div><!--end leave comment-->
-	<?php endif; ?>
+			</div>
+			<button type="submit" class="btn send-btn">Опублікувати коментар</button>
+			<?php \yii\widgets\ActiveForm::end() ?>
+		</form>
+	</div><!--end leave comment-->
 
 	<?php if (!empty($commentsParent)) : ?>
 		<div class="comments-block">
@@ -71,15 +69,22 @@ use yii\helpers\Url;
 					<?php if (!$comment->delete) : ?>
 						<div class="comment">
 							<a href="#" class="comment-img">
-								<img class="img-round" src="<?= $comment->user->getImage(); ?>" alt="">
+								<img class="img-round" src="<?php
+															if ($comment->user) {
+																echo $comment->user->getImage();
+															}
+															?>" alt="">
 							</a>
 							<div class="comment-body">
 								<div class="comment-top">
-									<?php if (!Yii::$app->user->isGuest) : ?>
-										<button class="replay btn pull-right" onclick="ShowReplay(this)"> Відповісти
-										</button>
-									<?php endif; ?>
-									<h5><?= $comment->user->name; ?></h5>
+									<button class="replay btn pull-right" onclick="ShowReplay(this)"> Відповісти
+									</button>
+									<h5><?php if ($comment->user) {
+											echo $comment->user->name;
+										} else {
+											echo 'Гість';
+										} ?>
+									</h5>
 									<p class="comment-date">
 										<?= $comment->getDate(); ?>
 									</p>
@@ -87,7 +92,7 @@ use yii\helpers\Url;
 								<div class="comment-text">
 									<?= $comment->text; ?>
 								</div>
-								<?php if ($comment->user_id == Yii::$app->user->id) : ?>
+								<?php if ($comment->user_id && $comment->user_id == Yii::$app->user->id) : ?>
 									<?php $form = \yii\widgets\ActiveForm::begin([
 										'action' => ['site/comment-delete', 'id' => $article->id, 'id_comment' => $comment->id],
 										'options' => ['class' => '', 'role' => 'form']
@@ -105,11 +110,23 @@ use yii\helpers\Url;
 						<?php if (is_int(array_search($comment->id, array_column($commentsChild, 'comment_id')))) : ?>
 							<div class="comment">
 								<a href="#" class="comment-img">
-									<img class="img-round" src="<?= $comment->user->getImage(); ?>" alt="">
+									<img class="img-round" src="<?php
+																if ($comment->user) {
+																	echo $comment->user->getImage();
+																} else {
+																	echo '/no-image-available.jpg';
+																}
+																?>" alt="">
 								</a>
 								<div class="comment-body">
 									<div class="comment-top">
-										<h5><?= $comment->user->name; ?></h5>
+										<h5>
+											<?php if ($comment->user) {
+												echo $comment->user->name;
+											} else {
+												echo 'Гість';
+											} ?>
+										</h5>
 										<p class="comment-date">
 											<?= $comment->getDate(); ?>
 										</p>
@@ -123,25 +140,29 @@ use yii\helpers\Url;
 					<?php endif; ?>
 
 					<div class="replay-comment" hidden>
-						<?php if (!Yii::$app->user->isGuest) : ?>
-							<?php $form = \yii\widgets\ActiveForm::begin([
-								'action' => ['site/comment', 'id' => $article->id, 'id_comment' => $comment->id],
-								'options' => ['class' => '', 'role' => 'form']
-							]) ?>
-							<div class="leave-comment-child"><!--leave comment-->
-								<h4>Залишити відгук для <?= $comment->user->name; ?></h4>
-								<div class="form-group">
-									<div class="col-md-12">
-										<?= $form->field($commentForm, 'comment')->textarea([
-											'class' => 'form-control',
-											'placeholder' => 'Write Message'
-										])->label(false) ?>
-									</div>
+						<?php $form = \yii\widgets\ActiveForm::begin([
+							'action' => ['site/comment', 'id' => $article->id, 'id_comment' => $comment->id],
+							'options' => ['class' => '', 'role' => 'form']
+						]) ?>
+						<div class="leave-comment-child"><!--leave comment-->
+							<h4>Залишити відгук для
+								<?php if ($comment->user) {
+									echo $comment->user->name;
+								} else {
+									echo 'гостя';
+								} ?>
+							</h4>
+							<div class="form-group">
+								<div class="col-md-12">
+									<?= $form->field($commentForm, 'comment')->textarea([
+										'class' => 'form-control',
+										'placeholder' => 'Write Message'
+									])->label(false) ?>
 								</div>
-								<button type="submit" class="btn send-btn">Опублікувати коментар</button>
-								<?php \yii\widgets\ActiveForm::end() ?>
-							</div><!--end leave comment-->
-						<?php endif; ?>
+							</div>
+							<button type="submit" class="btn send-btn">Опублікувати коментар</button>
+							<?php \yii\widgets\ActiveForm::end() ?>
+						</div><!--end leave comment-->
 					</div>
 					<div class="comment-childs-container">
 						<div class="comment-childs">
@@ -162,7 +183,7 @@ use yii\helpers\Url;
 												<div class="comment-text">
 													<?= $commentChild->text; ?>
 												</div>
-												<?php if ($commentChild->user_id == Yii::$app->user->id) : ?>
+												<?php if ($commentChild->user_id && $commentChild->user_id == Yii::$app->user->id) : ?>
 													<?php $form = \yii\widgets\ActiveForm::begin([
 														'action' => [
 															'site/comment-delete', 'id' => $article->id,
