@@ -72,6 +72,8 @@ use yii\helpers\Url;
 								<img class="img-round" src="<?php
 															if ($comment->user) {
 																echo $comment->user->getImage();
+															} else {
+																echo '/no-image-available.jpg';
 															}
 															?>" alt="">
 							</a>
@@ -171,11 +173,20 @@ use yii\helpers\Url;
 									<div class="comment-block">
 										<div class="comment">
 											<a href="#" class="comment-img">
-												<img class="img-round" src="<?= $commentChild->user->getImage(); ?>" alt="">
+												<img class="img-round" src="<?php if ($commentChild->user) {
+																				echo $commentChild->user->getImage();
+																			} else {
+																				echo
+																				'/no-image-available.jpg';
+																			}  ?>" alt="">
 											</a>
 											<div class="comment-body">
 												<div class="comment-top">
-													<h5><?= $commentChild->user->name; ?></h5>
+													<h5><?php if ($commentChild->user) {
+															echo $commentChild->user->name;
+														} else {
+															echo 'Гість';
+														} ?></h5>
 													<p class="comment-date">
 														<?= $commentChild->getDate(); ?>
 													</p>
