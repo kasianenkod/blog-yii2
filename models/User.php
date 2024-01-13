@@ -35,6 +35,10 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         return [
             [['name', 'login', 'password'], 'required'],
             ['login', 'email'],
+            [
+                ['login'], 'unique',
+                'message' => 'Цей логін вже використовується.'
+            ],
             [['name', 'login', 'password'], 'string'],
             [['name', 'login', 'password', 'image'], 'string', 'max' => 255],
         ];

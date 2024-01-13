@@ -73,8 +73,10 @@ class UserController extends Controller
         $model = new User();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->create()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+            if ($model->load($this->request->post()) && $model->validate()) {
+                if ($model->create()) {
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
             }
         } else {
             $model->loadDefaultValues();
@@ -96,8 +98,10 @@ class UserController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->myUpdate()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($this->request->isPost && $model->load($this->request->post())&& $model->validate()) {
+            if ($model->myUpdate()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         }
 
         return $this->render('update', [
